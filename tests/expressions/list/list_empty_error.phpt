@@ -1,6 +1,6 @@
 --TEST--
 Empty list() assignments are not allowed
---FILE--
+--FILE:FAIL:3--
 <?php
 
 list(,,,,,,,,,,) = [];
