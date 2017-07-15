@@ -1,6 +1,6 @@
-#Variables
+# Variables
 
-##General
+## General
 
 A *variable* is a named area of data storage that contains a PHP value. A variable is represented by a [VSlot](04-basic-concepts.md#general). A variable is created by [assigning a value](04-basic-concepts.md#assignment) to it.
 A variable is destroyed by *unsetting* it, either by an explicit call to the intrinsic [`unset`](10-expressions.md#unset), or by the Engine. The intrinsic [`isset`](10-expressions.md#isset) tests if a given variable exists and is not set to `NULL`.
@@ -28,9 +28,9 @@ The following kinds of variable may exist in a script:
 -   [Static class property](#static-properties).
 -   [Class and interface constant](#class-and-interface-constants).
 
-##Kinds of Variables
+## Kinds of Variables
 
-###Constants
+### Constants
 
 **Syntax**
 
@@ -52,7 +52,7 @@ and is a non-modifiable lvalue.
 
 Undefined constants are not defined implicitly -- forward usages of constants are also classified as undefined constants here. A distinction between class/interface constants and top level constants is made.
 
-For top level constants: For unqualified usages, the name of the undefined constant (as string) is used as substitution value. Moreover, a notice is emitted stating that the corresponding constant was undefined. For qualified usages, an exception of type [`Error`](14-classes.md#class-error) is thrown.
+For top level constants: For unqualified usages, the name of the undefined constant (as string) is used as substitution value. Moreover, a warning is emitted stating that the corresponding constant was undefined. For qualified usages, an exception of type [`Error`](14-classes.md#class-error) is thrown.
 
 For class/interface constants: An exception of type [`Error`](14-classes.md#class-error) is thrown, stating that the corresponding constant was undefined.
 
@@ -66,18 +66,18 @@ define('FAILURE', TRUE);
 
 // Examples of undefined constants
 echo NON_EXISTING_CONSTANT;     // uses 'NON_EXISTING_CONSTANT' as substitution
-                                // value and emits a notice stating that the
+                                // value and emits a warning stating that the
                                 // constant was undefined.
 
 echo NON_EXISTING_CONSTANT;     // same here, the constant is still undefined 
                                 // and 'NON_EXISTING_CONSTANT' is used as 
-                                // substitution value and a notice is emitted 
+                                // substitution value and a warning is emitted 
                                 // again.
 
 echo MAX_LENGTH;                // same here due to a forward usage 
                                 // (MAX_LENGTH is defined further below).
                                 // 'MAX_LENGTH' is used as substitution 
-                                // value and an notice is emitted.
+                                // value and a warning is emitted.
 
 echo \NON_EXISTING_CONSTANT;    // qualified use of undefined constant. Throws
                                 // an exception of type Error.
@@ -89,7 +89,7 @@ echo Exception::MESSAGE;        // undefined class constant. Throws an exception
 
 ```
 
-###Local Variables
+### Local Variables
 
 **Syntax**
 
@@ -213,7 +213,7 @@ $l = $k;   // a VSlot for $l was created and the value of $k (which is NULL)
 
 ```
 
-###Array Elements
+### Array Elements
 
 **Syntax**
 
@@ -262,7 +262,7 @@ $b = &colors[100];      // a VSlot for $b is created which points to the array
                         // NULL is assigned to it. A notice is *not* emitted.
 ```
 
-###Function Statics
+### Function Statics
 
 **Syntax**
 
@@ -356,7 +356,7 @@ f();
 echo "\$fs = $fs\n";    // $fs = 3
 ```
 
-###Global Variables
+### Global Variables
 
 **Syntax**
 
@@ -445,26 +445,26 @@ function f()
 
 Be also aware that declaring a variable global can hide a local variable and/or a function static with the same name. See [static variables section](#hidingNotice) for an example.
 
-###Instance Properties
+### Instance Properties
 
 These are described in [class instance properties section](14-classes.md#properties).
 They have class [scope](04-basic-concepts.md#scope) of the defining class and
 allocated [storage duration](04-basic-concepts.md#storage-duration).
 Access to the instance properties is governed by [visibility rules](14-classes.md#general).
 
-###Static Properties
+### Static Properties
 
 These are described in [class static properties section](14-classes.md#properties).
 They have class [scope](04-basic-concepts.md#scope) of the defining class
 and static [storage duration](04-basic-concepts.md#storage-duration).
 Access to the static properties is governed by [visibility rules](14-classes.md#general).
 
-###Class and Interface Constants
+### Class and Interface Constants
 
 These are described in [class constants section](14-classes.md#constants) and [interface constants section](15-interfaces.md#constants). They have class [scope](04-basic-concepts.md#scope) of the defining class or interface
  and static [storage duration](04-basic-concepts.md#storage-duration).
 
-##Predefined Variables
+## Predefined Variables
 
 The following global variables are available to all scripts:
 
